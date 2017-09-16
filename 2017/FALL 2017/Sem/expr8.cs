@@ -1,57 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApp11
+
+namespace ConsoleApp13
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int x,y, x1, y1, x2, y2, x3, y3;
-            Console.WriteLine("Введите Координату х точки А");
+
+            Console.WriteLine("y=ax+b");
+            double a, b;
+            Console.Write("Введите значение коэффициента Х (а)  =  ");
+            a = int.Parse(Console.ReadLine());
+            Console.Write("Введите значение переменной b  = ");
+            b = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите координаты точки (x;y) , через которую нужно провести перпендикуляр к прямой: ");
+            double x, y;
+            Console.Write("Координата Х = ");
             x = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Y position of A");
-
+            Console.Write("Координата У  =");
             y = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter X position of first post at L ");
-            x1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Y position of first post at L");
-            y1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter X position of 2nd post at L");
-            x2 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Y position of 2nd post at L");
-            // у прямой P я задаю только значение 2 точки т.к 1 точку я буду брать как А точку
-            Console.WriteLine("A position is 1 post at P");
-            Console.WriteLine("Enter X position of 2nd post at P");
-            x3 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Y position of 2nd post at P");
-            y3 = int.Parse(Console.ReadLine());
-
-            // Решение 
-            // Решение
-            // Решение
-            // Решения
-            // Решение
-            // Единственное решение в моей голове через формулы прямых типа аx+by+c=? но не знаю как перевести координаты в форму функции(формулы)
-            Console.WriteLine("Ответ дан - верный ответ ");
+            double a2 = Math.Round(-1 / a, 2); // значение  коэффициента прямой, перпендикулярной данной
+            double b2 = Math.Round((y - a2 * x), 2); // находим смещение перпендикуляра
+            double x1 = Math.Round(((b2 - b) / (a - a2)), 2); // находим точки пересесения х и 2х прямых
+            double y1= Math.Round((x * a2 + b2), 2);
+            Console.WriteLine("Точка пересечения прямой и  перпендикуляра: ( {0};{1} )", x, y);
             Console.ReadLine();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
