@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+namespace Program
+{
+    class Programm
+    {
+        public static void Main()
+        {
+            List<int> mass = new List<int>();
+            int n, l, sum = 0,
+                cur, maxlen = -1, curlen = 0;
+            Console.WriteLine("Введите сумму искомой последовательности");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите количество входных переменных");
+            l = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Вводите числа через Enter");
+            for (int i = 0; i < l; i++)
+            {
+                cur = Convert.ToInt32(Console.ReadLine());
+                mass.Add(cur);
+                sum += cur;
+                curlen++;
+                if (sum == n && maxlen < curlen)
+                {
+                    maxlen = curlen;
+                    sum -= mass[0];
+                    mass.Remove(mass[0]);
+                    curlen--;
+                }
+                if (sum > n)
+                {
+                    while (sum > n)
+                    {
+                        sum -= mass[0];
+                        mass.Remove(mass[0]);
+                        curlen--;
+                    }
+                }
+            }
+            Console.WriteLine("Максимальная последовательность чисел в сумме дающих сумму искомой последовательности");
+            Console.WriteLine(maxlen);
+
+        }
+    }
+}
