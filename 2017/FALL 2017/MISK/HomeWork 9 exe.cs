@@ -24,7 +24,7 @@ namespace HomeWork_9ns_exe
                 while (a < c)
                 {
                     lineOfNumbers += Convert.ToString(a);
-                    if (Convert.ToDecimal(lineOfNumbers) % c == 0 || Convert.ToDecimal(lineOfNumbers) > (decimal)Math.Pow(10, 12))
+                    if (Convert.ToDouble(lineOfNumbers) % c == 0 || Convert.ToDecimal(lineOfNumbers) > (decimal)Math.Pow(10, 12))
                     {
                         bMin = a;
                         break;
@@ -41,7 +41,6 @@ namespace HomeWork_9ns_exe
                 }
             }
         }
-
     }
 }
 
