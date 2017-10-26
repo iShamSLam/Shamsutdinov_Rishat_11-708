@@ -11,7 +11,6 @@ namespace HomeWork_9ns_exe
         static void Main(string[] args)
         {
             int bMin = 0;
-            Random rnd = new Random(100);
             Console.WriteLine("Введите начальное  число последовательности ");
             int a = int.Parse(Console.ReadLine());
             Console.WriteLine("Введите число с на которое делит последовательность без остатка");
@@ -21,15 +20,16 @@ namespace HomeWork_9ns_exe
                 Console.WriteLine("Введенное число не соответсвует параметру");
             else
             {
-                Console.WriteLine("Введите максимальный шаг последовательности");
-                int step = int.Parse(Console.ReadLine());
-                for (int b = a; b <= c*100; b += rnd.Next(1, step))
+                string lineOfNumbers = null;
+                while (a < c)
                 {
-                    if (b % c == 0)
+                    lineOfNumbers += Convert.ToString(a);
+                    if (Convert.ToDecimal(lineOfNumbers) % c == 0 || Convert.ToDecimal(lineOfNumbers) > (decimal)Math.Pow(10, 12))
                     {
-                        bMin = b;
+                        bMin = a;
                         break;
                     }
+                    a++;
                 }
                 if (bMin == 0)
                     Console.WriteLine("@ По заданным параметрам не существует такого числа " +
