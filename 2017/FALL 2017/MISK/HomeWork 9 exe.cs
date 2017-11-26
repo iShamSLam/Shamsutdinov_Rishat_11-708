@@ -21,10 +21,10 @@ namespace HomeWork_9ns_exe
             else
             {
                 string lineOfNumbers = null;
-                while (a < c)
+                while (a < 10000)
                 {
                     lineOfNumbers += Convert.ToString(a);
-                    if (Convert.ToDouble(lineOfNumbers) % c == 0 || Convert.ToDecimal(lineOfNumbers) > (decimal)Math.Pow(10, 12))
+                    if (Convert.ToDouble(lineOfNumbers) % c == 0)
                     {
                         bMin = a;
                         break;
