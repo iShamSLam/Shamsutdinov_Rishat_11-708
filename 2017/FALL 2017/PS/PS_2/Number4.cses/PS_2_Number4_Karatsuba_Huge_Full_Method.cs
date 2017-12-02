@@ -25,7 +25,7 @@ namespace PS_2_Number4_2
         {
             var xSes = AddNumberToList(x);
             var ySes = AddNumberToList(y);
-            if (xSes.Count <= 32 || ySes.Count <= 32)
+            if (xSes.Count <= 3 || ySes.Count <= 32)
                 return Multiplication(x, y);
             else
             {
@@ -75,6 +75,10 @@ namespace PS_2_Number4_2
             {
                 result[ix - 1] += result[ix] / 10;
                 result[ix] %= 10;
+            }
+            while (result[0] == 0)
+            {
+                result.RemoveAt(0);
             }
             return result;
         }
@@ -134,6 +138,10 @@ namespace PS_2_Number4_2
             {
                 result[ix - 1] += result[ix] / 10;
                 result[ix] %= 10;
+            }
+            while (result[0] == 0)
+            {
+                result.RemoveAt(0);
             }
             return result;
         }
