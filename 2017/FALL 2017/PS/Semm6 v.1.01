@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 namespace Program
 {
+    // ---check--- надо было просто сумму искать подряд идущих натуральных чисел, а не введенных с клавиатуры
     class Programm
     {
         public static void Main()
@@ -11,6 +12,7 @@ namespace Program
                 cur, maxlen = -1, curlen = 0;
             Console.WriteLine("Введите сумму искомой последовательности");
             n = Convert.ToInt32(Console.ReadLine());
+	    // ---check--- что за входные переменные?
             Console.WriteLine("Введите количество входных переменных");
             l = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Вводите числа через Enter");

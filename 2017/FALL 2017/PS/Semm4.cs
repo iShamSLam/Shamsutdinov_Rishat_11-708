@@ -8,6 +8,7 @@ namespace Semm4
 {
     class Program
     {
+	// ---check--- явно нет смысла выносить переменные на уровень класса
         public static int A, B;
         static void Main(string[] args)
         {
@@ -17,6 +18,7 @@ namespace Semm4
             int quantity = int.Parse(Console.ReadLine());
             if (quantity != 0)
             {
+		// ---check--- какое нулевое число? может всё же первое?
                 Console.WriteLine("Введите нулевое число");
                 A = int.Parse(Console.ReadLine());
             }
@@ -27,6 +29,7 @@ namespace Semm4
             {
                 Console.WriteLine("ВВедите "+ i +" число");
                 B = int.Parse(Console.ReadLine());
+		// ---check--- лучше так if (A*B < 0)
                 if (( A<0 && B>0) || (A>0 && B<0))
                 {
                     count++;

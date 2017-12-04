@@ -25,6 +25,7 @@ namespace Sem1
             c = int.Parse(Console.ReadLine());
             discriminant = b * b - 4 * a * c;
             radicalDiscriminant = Math.Sqrt(discriminant);
+	    // ---check--- "Если корней бесконечно много, вывести -1." - Этот вариант не обрабатываете?
             if (discriminant < 0)
                 Console.WriteLine("Нет корней");
             else if (discriminant == 0)

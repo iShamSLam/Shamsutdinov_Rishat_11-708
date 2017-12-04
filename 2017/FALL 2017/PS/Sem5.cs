@@ -18,10 +18,13 @@ namespace Sem5
             Console.WriteLine("Вычисления могут занять время");
             var n = int.Parse(Console.ReadLine());
             // Тестовое значение вводите любое значение вплоть до 10 в 9 степени или одного миллиарда 
+	    // ---check--- зачем эта переменная вообще?
             double testNumber = Math.Pow(10, numberOfNullsAndSteps);           
             Console.WriteLine("Наименьшее число q == ");
             Console.WriteLine(MinimalNumberEqivialentToQ(1, Math.Pow(10, numberOfNullsAndSteps), 0, minDellQ, numberOfNullsAndSteps, n));
         }
+	// ---check--- совсем непонятно, что ваш алгоритм делает, и зачем вам доп. параметр numberOfNullsAndSteps
+	// при вводе n=16, он мне решение не выдал
         // Этот метод принимает диапозон значений вставляет туда значение n, а затем производит поиск числа произведение цифр которого равно заданной n
         public static int MinimalNumberEqivialentToQ(int prodOfNumbersQ, double testNumber, int nextQ, int minDellQ, int numberOfNullsAndSteps,int n)
         {
