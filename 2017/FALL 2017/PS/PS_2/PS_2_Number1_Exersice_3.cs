@@ -31,6 +31,7 @@ namespace PS_2_Number1_Exersice_3
                 double basic = Math.Pow(x, k);
                 double FactorialDell = 1;
 
+				// ---check--- и здесь та же проблема
                 for (int i = 1; i <= k; i++)
                 {
                     FactorialDell *= (double)1 / i;

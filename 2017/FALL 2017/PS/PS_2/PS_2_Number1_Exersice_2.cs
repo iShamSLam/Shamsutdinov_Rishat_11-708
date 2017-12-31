@@ -39,7 +39,7 @@ namespace PS_2_Number1_Exersice_2
             {
                 double basic = -1;
                 double xSes = 1;
-
+				// ---check--- аналогичное замечание
                 for (int i = 1; i <= k; i++)
                 {
                     xSes *= x / i;

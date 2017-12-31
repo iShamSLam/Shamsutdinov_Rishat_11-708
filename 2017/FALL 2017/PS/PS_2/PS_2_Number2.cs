@@ -42,6 +42,7 @@ namespace PS_2_Number_2
             }
             return current_Pi;
         }
+		//---check--- вы бы хоть комментарии ставили, зачем таким образом считаете
         public static decimal Sqrt(decimal x, decimal epsilon = 0.0M)
         {
             decimal current = (decimal)Math.Sqrt((double)x), previous;

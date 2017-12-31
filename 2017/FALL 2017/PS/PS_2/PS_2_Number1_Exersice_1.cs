@@ -42,6 +42,7 @@ namespace PS_2_Number1_FirstExersice
             {
                 double basic = 1;
                 double xSes = 1;
+				// ---check--- цикл в цикле? нельзя было оптимальнее решить?
                 for (int i = 1; i <= k; i++)
                 {
                     if (a - k + 1 != 0)
