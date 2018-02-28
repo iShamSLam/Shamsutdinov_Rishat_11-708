@@ -8,31 +8,51 @@ namespace Somethings_Ropery_Both_By_Both
 {
     class Ropery
     {
-        // используется двумерный массив для обозначения связности,
-        private int[,] Numbers_Array = new int[,] {/*put something into it */};
-        
-        public int[,] Ropery_Find(int p)
+        private int apexesMax;
+        private int apexesCount;
+        private List<int> receiver = new List<int>(apexesMax);
+        private bool[] used = new bool[apexesMax];
+        private List<int> composition;
+
+        private void RoperyCheck(int vertigo)
         {
-            for(int i=0; i < Numbers_Array.Length;i++)
+            used[vertigo] = true;
+            composition.Add(v);
+            for (int i = 0; i < receiver.Count(); ++i)
             {
-              // To do...
+                int couple = composition[vertigo][i];
+                if (!used[couple])
+                    RoperyCheck(couple);
             }
-
-
-            return(Numbers_Array);
         }
-        public int[,] Union()
+
+        public void CompositionFinder()
         {
-            // To do...
-            return (Numbers_Array);
+            for (int i = 0; i < apexesCount; ++i)
+            {
+                used[i] = false;
+            }
+            for (int i = 0; i < apexesCount; ++i)
+            {
+                if (!used[i])
+                {
+                    composition.Clear();
+                    RoperyCheck(i);
+                }
+                Console.WriteLine(" Compositions:");
+                for (int j = 0; j < composition.Count(); ++j)
+                {
+                    Console.WriteLine(" {0} ", composition[j]);
+                }
+            }
         }
-
     }
     class Program
     {
         static void Main(string[] args)
         {
-            // checking...
+            var test = new Ropery();
+            test.CompositionFinder();
         }
     }
 }
