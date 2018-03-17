@@ -42,11 +42,11 @@ namespace Lexicographical_Sort_Mathematical_Version
         }
         public string[] LexographicalSort(char firstChar)
         {
+            List_Filler();
             if(sampleList.Count==0)
             {
                 throw new Exception("Massive is empty!! are you forget to fill it?! Yeah, of course!");
-            }
-            List_Filler();
+            }   
             // Для алгоритма из одинаково длинных слов, избавьтесь от сортировки по длине
             SortbByLenght();
             int difference = 0; int register = 0;
