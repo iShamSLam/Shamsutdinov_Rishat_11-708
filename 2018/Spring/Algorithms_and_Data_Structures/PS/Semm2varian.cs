@@ -13,9 +13,9 @@ namespace Semmestrovka_2_variant
             Console.WriteLine("Вывод :");
             test.CollectionWrite();
             Console.WriteLine("Поиск по индексу :");
-            Console.WriteLine(test.FindByIndex(test.First, 1).Value);
+            Console.WriteLine(test.FindByIndex(test.First, 1));
             Console.WriteLine();
-            test.PasteToCollection();
+            test.PasteToCollection(null);
             Console.WriteLine("Провека вставки элемента :");
             test.CollectionWrite();
             Console.WriteLine();
@@ -23,7 +23,7 @@ namespace Semmestrovka_2_variant
             Console.WriteLine("Проверка удаления элемента :");
             test.CollectionWrite();
             Console.WriteLine("Провека на формирования коллекции со словами фиксированной длины :");
-            test.NewCollectionWithConstValueLenght(test).CollectionWrite();
+            test.NewCollectionWithConstValueLenght(test,0).CollectionWrite();
             Console.WriteLine();
             test.SplittingListIntoTwo(test, out WordCollection vowels, out WordCollection consonants);
             Console.WriteLine("Провека коллекции гласных :");
@@ -40,19 +40,19 @@ namespace Semmestrovka_2_variant
     }
 
     //******************************************************************************************************
-    class WordCollection
+    public class WordCollection
     {
         private string word;
-        private int index = 0;
+        public int index = 0;
 
         /// <summary>
         /// Начало коллекции
         /// </summary>
-        public ListItem First { get; private set; }
+        public ListItem First { get; set; }
         /// <summary>
         /// конец коллекции
         /// </summary>
-        ListItem Last { get; set; }
+        public ListItem Last { get; set; }
         /// <summary>
         ///  Обьект коллекции 
         /// </summary> 
@@ -77,6 +77,10 @@ namespace Semmestrovka_2_variant
             var result = new WordCollection();
             string filler = "yyyyyyyyyyyyyyyyyyy";
             var condition = (buff1 != null && buff2 != null);
+            if (first.First == null)
+                return second;
+            if (second.First == null)
+                return first;
             while (condition)
             {
                 while (first.Last.Index < second.Last.Index)
@@ -144,17 +148,20 @@ namespace Semmestrovka_2_variant
         /// <param name="temp"></param>отправная точка
         /// <param name="index"></param> индекс начала поиска
         /// <returns></returns> 
-        public ListItem FindByIndex(ListItem temp, int index)
+        public string FindByIndex(ListItem temp, int index)
         {
+            string result = null;
             while ((temp.Index <= index))
             {
                 if (temp.Index == index)
                 {
+                    result = temp.Value;
                     break;
                 }
                 temp = temp.Next;
+
             }
-            return temp;
+            return result;
         }
         /// <summary>
         /// Проверка на то, содержится ли хотя бы 1 элемент
@@ -166,9 +173,10 @@ namespace Semmestrovka_2_variant
         /// </summary>
         /// <param name="value"></param> значение
         /// <param name="index"></param> индекс последнего элемента
-        private void Add(string value, int index)
+        public void Add(string value, int index)
         {
-
+            if (value.Substring(value.Length - 1, 1) == " ")
+                value = value.Substring(0, value.Length - 2);
             if (IsEmpty)
             {
                 First = Last = new ListItem { Value = value, Index = index };
@@ -233,10 +241,13 @@ namespace Semmestrovka_2_variant
         /// Вставка произвольной строки в коллекцию с сохранением порядка
         /// </summary>
         /// <param name="temp"></param>слово для вставки 
-        public void PasteToCollection()
+        public void PasteToCollection(string temp)
         {
-            Console.WriteLine("Введите слово для вставки");
-            var temp = Console.ReadLine();
+            if (temp == null)
+            {
+                Console.WriteLine("Введите слово для вставки");
+                temp = Console.ReadLine();
+            }
             var buffer = First;
             if (temp == "")
                 throw new Exception("You just don't write word, try again later");
@@ -324,8 +335,9 @@ namespace Semmestrovka_2_variant
                     }
                     else if (buffer == Last)
                     {
-                        buffer.Previous = Last;
-                        buffer = null;
+                        buffer.Previous.Next=null;
+                        buffer.Previous = null;
+                        buffer.Value = null;
                         index--;
                         break;
                     }
@@ -338,7 +350,7 @@ namespace Semmestrovka_2_variant
                     var buff = First;
                     buffer = null;
                     index--;
-                    for (int i = 0; i <= index; i++)
+                    for (int i = 0; i < index; i++)
                     {
                         buff.Index = i;
                         buff = buff.Next;
@@ -356,17 +368,21 @@ namespace Semmestrovka_2_variant
         /// Принимает длину в соответсвии с которой элементы с длиной равной принятой забиваются в новую коллекцию с фиксированной длиной эллементов
         /// </summary>
         /// <param name="test"></param> Изначальная коллекция из которой формируется новая коллекция
-        public WordCollection NewCollectionWithConstValueLenght(WordCollection test)
+        public WordCollection NewCollectionWithConstValueLenght(WordCollection test, int lenght)
         {
+           
             var buffer = test.First;
             var result = new WordCollection();
-            Console.WriteLine("Введите нужную длину слов");
-            int lenght = int.Parse(Console.ReadLine());
+            if (lenght == 0)
+            {
+                Console.WriteLine("Введите нужную длину слов");
+                lenght = int.Parse(Console.ReadLine());
+            }
             for (int i = 0; i <= test.index; i++)
             {
                 if (buffer.Value.Length == lenght)
                 {
-                    result.Add(buffer.Value, i);
+                    result.Add(buffer.Value,result.index);
                 }
                 if (buffer.Next != null)
                     buffer = buffer.Next;
@@ -397,14 +413,24 @@ namespace Semmestrovka_2_variant
                 if (vowelAlph.Contains(buffer.Value.Substring(0, 1)))
                 {
                     vowels.Add(buffer.Value, vowels.index);
-                    buffer = buffer.Next;
-                    continue;
+                    if (buffer.Next != null)
+                    {
+                        buffer = buffer.Next;
+                        continue;
+                    }
+                    else
+                        break;
                 }
                 if (consonantAlph.Contains(buffer.Value.Substring(0, 1)))
                 {
                     consonant.Add(buffer.Value, consonant.index);
-                    buffer = buffer.Next;
-                    continue;
+                    if (buffer.Next != null)
+                    {
+                        buffer = buffer.Next;
+                        continue;
+                    }
+                    else
+                        break;
                 }
             }
         }
@@ -416,24 +442,25 @@ namespace Semmestrovka_2_variant
         {
             var test = First;
             var word = test.Value;
-            while (test != Last)
+            while (true)
             {
-                if (word.Length == 2 && word[0] == word[1] || word.Length == 1)
-                {
-                    temp.RemoveFromCollection(test.Value);
-                    test = test.Next;
-                    word = test.Value;
-                }
                 if (Equals(word.Substring(0, 1), word.Substring(word.Length - 1, 1)))
                 {
                     word = word.Substring(1, word.Length - 2);
+                    if  (word.Length == 2 && word[0] == word[1] || word.Length == 1)
+                    {
+                        temp.RemoveFromCollection(test.Value);
+                        if (test.Next == null)
+                            break;
+                        test = test.Next;
+                        word = test.Value;
+                    }
                 }
                 else
                 {
                     if (test.Next == null)
                         break;
                     test = test.Next;
-
                     word = test.Value;
                 }
             }
