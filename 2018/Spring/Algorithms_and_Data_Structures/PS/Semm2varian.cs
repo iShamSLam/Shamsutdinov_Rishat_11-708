@@ -42,8 +42,10 @@ namespace Semmestrovka_2_variant
     //******************************************************************************************************
     public class WordCollection
     {
-        private string word;
-        public int index = 0;
+        /// <summary>
+        /// количество элементов в коллекции
+        /// </summary>
+        public int count = 0;
 
         /// <summary>
         /// Начало коллекции
@@ -56,7 +58,7 @@ namespace Semmestrovka_2_variant
         /// <summary>
         ///  Обьект коллекции 
         /// </summary> 
-        ListItem current { get; set; }
+        ListItem Сurrent { get; set; }
         public class ListItem
         {
             public string Value { get; set; }
@@ -85,11 +87,11 @@ namespace Semmestrovka_2_variant
             {
                 while (first.Last.Index < second.Last.Index)
                 {
-                    first.Add(filler, first.index);
+                    first.Add(filler, first.count);
                 }
                 while (first.Last.Index > second.Last.Index)
                 {
-                    second.Add(filler, second.index);
+                    second.Add(filler, second.count);
                 }
 
                 if (!(buff1 == null && buff2 == null))
@@ -103,13 +105,13 @@ namespace Semmestrovka_2_variant
                 {
                     if (buff2.Value == filler)
                         break;
-                    result.Add(buff2.Value, result.index);
+                    result.Add(buff2.Value, result.count);
                     buff2 = buff2.Next;
                     break;
                 }
                 else if (buff2 == null && buff1 != null)
                 {
-                    result.Add(buff1.Value, result.index);
+                    result.Add(buff1.Value, result.count);
                     buff1 = buff1.Next;
                     break;
                 }
@@ -119,7 +121,7 @@ namespace Semmestrovka_2_variant
                     break;
                 if (buff1.Value.CompareTo(buff2.Value) < 0 && condition)
                 {
-                    result.Add(buff1.Value, result.index);
+                    result.Add(buff1.Value, result.count);
                     buff1 = buff1.Next;
                     if (buff1 == null)
                         continue;
@@ -127,7 +129,7 @@ namespace Semmestrovka_2_variant
 
                 if (buff2.Value.CompareTo(buff1.Value) < 0 && condition)
                 {
-                    result.Add(buff2.Value, result.index);
+                    result.Add(buff2.Value, result.count);
                     buff2 = buff2.Next;
                     if (buff2 == null)
                         continue;
@@ -180,8 +182,8 @@ namespace Semmestrovka_2_variant
             if (IsEmpty)
             {
                 First = Last = new ListItem { Value = value, Index = index };
-                current = First;
-                this.index++;
+                Сurrent = First;
+                this.count++;
             }
             else
             {
@@ -189,12 +191,12 @@ namespace Semmestrovka_2_variant
                 {
                     Value = value,
                     Index = index,
-                    Previous = current,
+                    Previous = Сurrent,
                 };
-                current.Next = item;
-                current = item;
+                Сurrent.Next = item;
+                Сurrent = item;
                 Last = item;
-                this.index++;
+                this.count++;
             }
         }
 
@@ -203,13 +205,14 @@ namespace Semmestrovka_2_variant
         /// </summary>
         public void CollectionFiller()
         {
+            string word;
             Console.WriteLine(@"Начинается считывание слов, если хотите прекратить вбейте ""end""");
             do
             {
                 word = Console.ReadLine();
                 if (word != "end")
                 {
-                    Add(word, index);
+                    Add(word, count);
                 }
             }
             while (word != "end");
@@ -270,7 +273,7 @@ namespace Semmestrovka_2_variant
                     };
                     buffer.Next = item;
                     Last = item;
-                    index++;
+                    count++;
                     break;
                 }
                 if ((temp.CompareTo(buffer.Value) > 0 && temp.CompareTo(buffer.Next.Value) < 0))
@@ -295,7 +298,7 @@ namespace Semmestrovka_2_variant
                     }
                     buffer.Next = item;
                     var buff = item.Next;
-                    for (int i = item.Next.Index; i < index; i++)
+                    for (int i = item.Next.Index; i < count; i++)
                     {
                         buff.Index = i + 1;
                         if (buff.Next != null)
@@ -338,7 +341,7 @@ namespace Semmestrovka_2_variant
                         buffer.Previous.Next=null;
                         buffer.Previous = null;
                         buffer.Value = null;
-                        index--;
+                        count--;
                         break;
                     }
                     else
@@ -349,8 +352,8 @@ namespace Semmestrovka_2_variant
                     }
                     var buff = First;
                     buffer = null;
-                    index--;
-                    for (int i = 0; i < index; i++)
+                    count--;
+                    for (int i = 0; i < count; i++)
                     {
                         buff.Index = i;
                         buff = buff.Next;
@@ -378,11 +381,11 @@ namespace Semmestrovka_2_variant
                 Console.WriteLine("Введите нужную длину слов");
                 lenght = int.Parse(Console.ReadLine());
             }
-            for (int i = 0; i <= test.index; i++)
+            for (int i = 0; i <= test.count; i++)
             {
                 if (buffer.Value.Length == lenght)
                 {
-                    result.Add(buffer.Value,result.index);
+                    result.Add(buffer.Value,result.count);
                 }
                 if (buffer.Next != null)
                     buffer = buffer.Next;
@@ -408,11 +411,11 @@ namespace Semmestrovka_2_variant
             consonant = new WordCollection();
             string vowelAlph = "AaEeIiOoUuYyАаОоИиЕеЁёЭэЫыУуЮюЯя"; string consonantAlph = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwZzБбВвГгДдЖжЗзЙйКкЛлМмНнПпРрСсТтФфХхЦцЧчШшЩщ";
             var buffer = test.First;
-            for (int i = 0; i <= test.index; i++)
+            for (int i = 0; i <= test.count; i++)
             {
                 if (vowelAlph.Contains(buffer.Value.Substring(0, 1)))
                 {
-                    vowels.Add(buffer.Value, vowels.index);
+                    vowels.Add(buffer.Value, vowels.count);
                     if (buffer.Next != null)
                     {
                         buffer = buffer.Next;
@@ -423,7 +426,7 @@ namespace Semmestrovka_2_variant
                 }
                 if (consonantAlph.Contains(buffer.Value.Substring(0, 1)))
                 {
-                    consonant.Add(buffer.Value, consonant.index);
+                    consonant.Add(buffer.Value, consonant.count);
                     if (buffer.Next != null)
                     {
                         buffer = buffer.Next;

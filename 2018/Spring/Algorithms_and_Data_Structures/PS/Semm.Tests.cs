@@ -38,7 +38,7 @@ namespace Testing
             temp = temp.Next;
             temp.Next = new WordCollection.ListItem { Value = "yanki", Index = temp.Index + 1, Previous = temp, };
             temp = temp.Next; Example.Last = temp;
-            Example.index = temp.Index;
+            Example.count = temp.Index;
 
         }
 
@@ -59,21 +59,21 @@ namespace Testing
         {
             ExampleFill();
             var test = new WordCollection();
-            test.Add("aberdin", test.index);
-            test.Add("adler", test.index);
-            test.Add("boungnuob", test.index);
-            test.Add("dance", test.index);
-            test.Add("dumb", test.index);
-            test.Add("enjoy", test.index);
-            test.Add("flag", test.index);
-            test.Add("higig", test.index);
-            test.Add("hower", test.index);
-            test.Add("open", test.index);
-            test.Add("Uzi", test.index);
-            test.Add("viv", test.index);
-            test.Add("wonk", test.index);
+            test.Add("aberdin", test.count);
+            test.Add("adler", test.count);
+            test.Add("boungnuob", test.count);
+            test.Add("dance", test.count);
+            test.Add("dumb", test.count);
+            test.Add("enjoy", test.count);
+            test.Add("flag", test.count);
+            test.Add("higig", test.count);
+            test.Add("hower", test.count);
+            test.Add("open", test.count);
+            test.Add("Uzi", test.count);
+            test.Add("viv", test.count);
+            test.Add("wonk", test.count);
 
-            for (int i = 0; i < test.index; i++)
+            for (int i = 0; i < test.count; i++)
             {
                 Assert.AreEqual(test.FindByIndex(test.First, i), Example.FindByIndex(Example.First, i));
             }
@@ -91,16 +91,16 @@ namespace Testing
         public void PasteTest()
         {
             var test = new WordCollection();
-            test.Add("aberdin", test.index);
-            test.Add("adler", test.index);
-            test.Add("bank", test.index);
-            test.Add("boungnuob", test.index);
-            test.Add("byzina", test.index);
-            test.Add("dance", test.index);
+            test.Add("aberdin", test.count);
+            test.Add("adler", test.count);
+            test.Add("bank", test.count);
+            test.Add("boungnuob", test.count);
+            test.Add("byzina", test.count);
+            test.Add("dance", test.count);
             ExampleFill();
             Example.PasteToCollection("bank");
             Example.PasteToCollection("byzina");
-            for (int i = 0; i < test.index; i++)
+            for (int i = 0; i < test.count; i++)
             {
                 Assert.AreEqual(test.FindByIndex(test.First, i), Example.FindByIndex(Example.First, i));
             }
@@ -110,20 +110,20 @@ namespace Testing
         {
             ExampleFill();
             var test = new WordCollection();
-            test.Add("aberdin", test.index);
-            test.Add("boungnuob", test.index);
-            test.Add("dumb", test.index);
-            test.Add("enjoy", test.index);
-            test.Add("flag", test.index);
-            test.Add("higig", test.index);
-            test.Add("hower", test.index);
-            test.Add("Uzi", test.index);
-            test.Add("viv", test.index);
-            test.Add("wonk", test.index);
+            test.Add("aberdin", test.count);
+            test.Add("boungnuob", test.count);
+            test.Add("dumb", test.count);
+            test.Add("enjoy", test.count);
+            test.Add("flag", test.count);
+            test.Add("higig", test.count);
+            test.Add("hower", test.count);
+            test.Add("Uzi", test.count);
+            test.Add("viv", test.count);
+            test.Add("wonk", test.count);
             Example.RemoveFromCollection("adler");
             Example.RemoveFromCollection("dance");
             Example.RemoveFromCollection("open");
-            for (int i = 0; i < test.index; i++)
+            for (int i = 0; i < test.count; i++)
             {
                 Assert.AreEqual(test.FindByIndex(test.First, i), Example.FindByIndex(Example.First, i));
             }
@@ -133,13 +133,13 @@ namespace Testing
         public void ConstantTest()
         {
             var test = new WordCollection();
-            test.Add("dumb", test.index);
-            test.Add("flag", test.index);
-            test.Add("open", test.index);
-            test.Add("wonk", test.index);
+            test.Add("dumb", test.count);
+            test.Add("flag", test.count);
+            test.Add("open", test.count);
+            test.Add("wonk", test.count);
             ExampleFill();
             var test2 = Example.NewCollectionWithConstValueLenght(Example, 4);
-            for (int i = 0; i < test.index; i++)
+            for (int i = 0; i < test.count; i++)
             {
                 Assert.AreEqual(test.FindByIndex(test.First, i), test2.FindByIndex(test2.First, i));
             }
@@ -149,19 +149,19 @@ namespace Testing
         {
             var test = new WordCollection();
             var test2 = new WordCollection();
-            test2.Add("aberdin", test.index);
-            test2.Add("adler", test.index);
-            test.Add("boungnuob", test.index);
-            test.Add("dance", test.index);
-            test.Add("dumb", test.index);
-            test2.Add("enjoy", test.index);
-            test.Add("flag", test.index);
-            test.Add("higig", test.index);
-            test.Add("hower", test.index);
-            test2.Add("open", test.index);
-            test2.Add("Uzi", test.index);
-            test.Add("viv", test.index);
-            test.Add("wonk", test.index);
+            test2.Add("aberdin", test.count);
+            test2.Add("adler", test.count);
+            test.Add("boungnuob", test.count);
+            test.Add("dance", test.count);
+            test.Add("dumb", test.count);
+            test2.Add("enjoy", test.count);
+            test.Add("flag", test.count);
+            test.Add("higig", test.count);
+            test.Add("hower", test.count);
+            test2.Add("open", test.count);
+            test2.Add("Uzi", test.count);
+            test.Add("viv", test.count);
+            test.Add("wonk", test.count);
             ExampleFill();
             var vowels = new WordCollection();
             var consonant = new WordCollection();
@@ -173,46 +173,46 @@ namespace Testing
         {
             var test = new WordCollection();
             var test2 = new WordCollection();
-            test2.Add("aberdin", test.index);
-            test2.Add("adler", test.index);
-            test.Add("boungnuob", test.index);
-            test.Add("dance", test.index);
-            test.Add("dumb", test.index);
-            test2.Add("enjoy", test.index);
-            test.Add("flag", test.index);
-            test.Add("higig", test.index);
-            test.Add("hower", test.index);
-            test2.Add("open", test.index);
-            test2.Add("Uzi", test.index);
-            test.Add("viv", test.index);
-            test.Add("wonk", test.index);
+            test2.Add("aberdin", test.count);
+            test2.Add("adler", test.count);
+            test.Add("boungnuob", test.count);
+            test.Add("dance", test.count);
+            test.Add("dumb", test.count);
+            test2.Add("enjoy", test.count);
+            test.Add("flag", test.count);
+            test.Add("higig", test.count);
+            test.Add("hower", test.count);
+            test2.Add("open", test.count);
+            test2.Add("Uzi", test.count);
+            test.Add("viv", test.count);
+            test.Add("wonk", test.count);
             ExampleFill();
             var test3 = Example.CombineCollection(test, test2);
-            for (int i = 0; i < test3.index; i++)
+            for (int i = 0; i < test3.count; i++)
             {
                 Assert.AreEqual(test3.FindByIndex(test3.First, i), Example.FindByIndex(Example.First, i));
             }
             var senua = new WordCollection();
-            senua.Add("bank",senua.index);
-            senua.Add("credo",senua.index);
-            senua.Add("flow",senua.index);
-            senua.Add("van",senua.index);
-            senua.Add("xan",senua.index);
+            senua.Add("bank",senua.count);
+            senua.Add("credo",senua.count);
+            senua.Add("flow",senua.count);
+            senua.Add("van",senua.count);
+            senua.Add("xan",senua.count);
             var vertigo = new WordCollection();
-            vertigo.Add("bump",vertigo.index);
-            vertigo.Add("wanish",vertigo.index);
-            vertigo.Add("yrui",vertigo.index);
+            vertigo.Add("bump",vertigo.count);
+            vertigo.Add("wanish",vertigo.count);
+            vertigo.Add("yrui",vertigo.count);
             var senuvar = senua.CombineCollection(senua,vertigo);
             var fin = new WordCollection();
-            fin.Add("bank", fin.index);
-            fin.Add("bump", fin.index);
-            fin.Add("credo", fin.index);
-            fin.Add("flow", fin.index);
-            fin.Add("van", fin.index);
-            fin.Add("wanish", fin.index);
-            fin.Add("xan", fin.index);
-            fin.Add("yrui", fin.index);
-            for (int i = 0; i < senuvar.index; i++)
+            fin.Add("bank", fin.count);
+            fin.Add("bump", fin.count);
+            fin.Add("credo", fin.count);
+            fin.Add("flow", fin.count);
+            fin.Add("van", fin.count);
+            fin.Add("wanish", fin.count);
+            fin.Add("xan", fin.count);
+            fin.Add("yrui", fin.count);
+            for (int i = 0; i < senuvar.count; i++)
             {
                 Assert.AreEqual(fin.FindByIndex(fin.First, i), senuvar.FindByIndex(senuvar.First, i));
             }
@@ -221,35 +221,35 @@ namespace Testing
         public void RemoveEqualsTest()
         {
             var test = new WordCollection();
-            test.Add("aberdin", test.index);
-            test.Add("adler", test.index);
-            test.Add("dance", test.index);
-            test.Add("dumb", test.index);
-            test.Add("enjoy", test.index);
-            test.Add("flag", test.index);
-            test.Add("higig", test.index);
-            test.Add("hower", test.index);
-            test.Add("open", test.index);
-            test.Add("Uzi", test.index);            
-            test.Add("wonk", test.index);
+            test.Add("aberdin", test.count);
+            test.Add("adler", test.count);
+            test.Add("dance", test.count);
+            test.Add("dumb", test.count);
+            test.Add("enjoy", test.count);
+            test.Add("flag", test.count);
+            test.Add("higig", test.count);
+            test.Add("hower", test.count);
+            test.Add("open", test.count);
+            test.Add("Uzi", test.count);            
+            test.Add("wonk", test.count);
             var test2 = new WordCollection();
-            test2.Add("aaaaaaa", test2.index);
-            test2.Add("aberdin", test2.index);
-            test2.Add("adler", test2.index);
-            test2.Add("boungnuob", test2.index);
-            test2.Add("dance", test2.index);
-            test2.Add("dumb", test2.index);
-            test2.Add("enjoy", test2.index);
-            test2.Add("flag", test2.index);
-            test2.Add("higig", test2.index);
-            test2.Add("hower", test2.index);
-            test2.Add("open", test2.index);
-            test2.Add("Uzi", test2.index);
-            test2.Add("viv", test2.index);
-            test2.Add("wonk", test2.index);
+            test2.Add("aaaaaaa", test2.count);
+            test2.Add("aberdin", test2.count);
+            test2.Add("adler", test2.count);
+            test2.Add("boungnuob", test2.count);
+            test2.Add("dance", test2.count);
+            test2.Add("dumb", test2.count);
+            test2.Add("enjoy", test2.count);
+            test2.Add("flag", test2.count);
+            test2.Add("higig", test2.count);
+            test2.Add("hower", test2.count);
+            test2.Add("open", test2.count);
+            test2.Add("Uzi", test2.count);
+            test2.Add("viv", test2.count);
+            test2.Add("wonk", test2.count);
             test2.RemoveEqualWords(test2);
 
-            for (int i = 0; i < test2.index; i++)
+            for (int i = 0; i < test2.count; i++)
             {
                 Assert.AreEqual(test2.FindByIndex(test2.First, i), test.FindByIndex(test.First, i));
             }
