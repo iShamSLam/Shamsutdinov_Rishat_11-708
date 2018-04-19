@@ -22,6 +22,7 @@ namespace Second_PS_Tournament_Sort
                 i++;
             }
         }
+        // Вспомогательный метод о котором я говорил
         public static IEnumerable<int> Initialize()
         {
             var temp = Read()
@@ -37,6 +38,7 @@ namespace Second_PS_Tournament_Sort
         private void Initialize(int n, int size, int small, int[] temp, int[] tree)
         {
             int i, j, k;
+            // Первичное заполнение - инициализация листьев
             for (i = 1; i < n; i++)
             {
                 tree[size + i - 1] = temp[i];
@@ -137,6 +139,7 @@ namespace Second_PS_Tournament_Sort
             }
             temp[1] = tree[tree[1]];
             time.Stop();
+            Console.WriteLine(temp.Length);
             Console.WriteLine(time.ElapsedMilliseconds);
             return temp.Skip(1);
 
