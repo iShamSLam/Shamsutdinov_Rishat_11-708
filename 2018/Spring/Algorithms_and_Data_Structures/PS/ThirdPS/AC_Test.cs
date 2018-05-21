@@ -25,13 +25,30 @@ namespace AC_Test
             
         }
         [TestMethod]
+        public void LineNumbers()
+        {
+            string text = "world, i hello you!";
+            string[] words = new[] { "hello", "world" };
+
+            Aho_Corasick.Trie<int> trie = new Aho_Corasick.Trie<int>();
+            for (int i = 0; i < words.Length; i++)
+                trie.Add(words[i], i);
+            trie.Build();
+
+            int[] lines = trie.Find(text).ToArray();
+
+            Assert.AreEqual(2, lines.Length);
+            Assert.AreEqual(1, lines[0]);
+            Assert.AreEqual(0, lines[1]);
+        }
+        [TestMethod]
         public void TestMethod2()
         {
-            string text = "hello and welcome to this beautiful world!";
+            string text = "welcome to the our great society my comrad";
 
             Aho_Corasick.Trie trie = new Aho_Corasick.Trie();
-            trie.Add("hello");
-            trie.Add("world");
+            trie.Add("to");
+            trie.Add("comrad");
             trie.Build();
 
             Assert.IsTrue(trie.Find(text).Any());
