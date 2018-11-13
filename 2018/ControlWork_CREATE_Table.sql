@@ -1,0 +1,49 @@
+USE master
+GO
+
+CREATE DATABASE ControlWork
+Go
+
+CREATE LOGIN lala  WITH PASSWORD = 'lala'
+GO
+
+USE ControlWork
+GO
+
+CREATE USER lala FOR LOGIN lala
+GO
+
+GRANT CREATE TABLE TO lala;
+GO
+
+CREATE TABLE STAT
+(
+PATCIENT nvarchar NOT NULL,
+DTR_PAT Date CHECK(DTR_PAT >'01.01.1950' AND DTR_PAT < GETDATE()),
+DOCTOR nvarchar(30) NOT NULL,
+KOD_DIAGN int,
+OTDEL nvarchar(30) default'Терапевтическое',
+DT_POST Date NOT NULL,
+DT_VIP Date NULL CHECK(DT_VIP - DT_POST < 60)
+CONSTRAINT STAT_PK PRIMARY KEY (PATCIENT, KOD_DIAGN,OTDEL)
+);
+GO
+
+CREATE TABLE PAT
+(
+FIO nvarchar(30),
+ VOZRAST int,
+ SEX nvarchar(1) CHECK (SEX = 'M' OR SEX = 'Ж'),
+ ADRES nvarchar default NULL,
+ CONSTRAINT PAT_PK PRIMARY KEY (FIO, VOZRAST)
+);
+GO
+CREATE TABLE DOCT
+(
+DOCTOR nvarchar(30) PRIMARY KEY,
+SPEC varchar(20) CHECK(SPEC ='терапевт' OR SPEC ='хирург' OR SPEC ='оторинголог')
+);
+GO
+
+
+ 
