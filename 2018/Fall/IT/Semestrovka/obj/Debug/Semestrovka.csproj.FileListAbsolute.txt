@@ -1,0 +1,13 @@
+C:\Users\User\source\repos\Semestrovka\obj\Debug\Semestrovka.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Semestrovka\obj\Debug\Semestrovka.Properties.Resources.resources
+C:\Users\User\source\repos\Semestrovka\obj\Debug\Semestrovka.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Semestrovka\obj\Debug\Semestrovka.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Semestrovka\bin\Debug\Semestrovka.exe.config
+C:\Users\User\source\repos\Semestrovka\bin\Debug\Semestrovka.exe
+C:\Users\User\source\repos\Semestrovka\bin\Debug\Semestrovka.pdb
+C:\Users\User\source\repos\Semestrovka\bin\Debug\AngleSharp.dll
+C:\Users\User\source\repos\Semestrovka\bin\Debug\AngleSharp.xml
+C:\Users\User\source\repos\Semestrovka\obj\Debug\Semestrovka.csproj.CopyComplete
+C:\Users\User\source\repos\Semestrovka\obj\Debug\Semestrovka.exe
+C:\Users\User\source\repos\Semestrovka\obj\Debug\Semestrovka.pdb
+C:\Users\User\source\repos\Semestrovka\obj\Debug\Semestrovka.Forms.resources
