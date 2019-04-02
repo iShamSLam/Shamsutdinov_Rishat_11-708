@@ -1,11 +1,10 @@
 ﻿@using System.Configuration
 
 @{
-  Layout = null;
-  var action = ((string)ViewContext.RouteData.Values["Action"]).ToLower();
+    Layout = null;
+    var action = ((string)ViewContext.RouteData.Values["Action"]).ToLower();
 
-  var blogTitle = ConfigurationManager.AppSettings["BlogTitle"];
-  var feedBurnerUrl = ConfigurationManager.AppSettings["FeedBurnerUrl"];
+    var blogTitle = "SemMBlog";
 }
 
 <!DOCTYPE html>
@@ -47,10 +46,6 @@
 
     <!-- Main Content -->
     <div id="site_content">
-
-      <div class="feeddiv">
-        <a href="@feedBurnerUrl" title="Subscribe to my blog">Subscribe to my blog</a>
-      </div>
 
       @Html.Partial("_Search")
       @RenderBody()

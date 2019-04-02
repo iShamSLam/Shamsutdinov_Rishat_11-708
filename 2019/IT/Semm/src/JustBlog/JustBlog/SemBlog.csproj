@@ -145,7 +145,6 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="CustomDateTimeConverter.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="FeedResult.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,7 +168,6 @@
     <Content Include="Content\themes\simple\images\bullet.png" />
     <Content Include="Content\themes\simple\images\graphic.png" />
     <Content Include="Content\themes\simple\images\link.png" />
-    <Content Include="Content\themes\simple\images\logo.jpg" />
     <Content Include="Content\themes\simple\images\logo.png" />
     <Content Include="Content\themes\simple\images\search.png" />
     <Content Include="Content\themes\simple\images\tabs.png" />
@@ -1154,9 +1152,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JustBlog.Core\JustBlog.Core.csproj">
+    <ProjectReference Include="..\JustBlog.Core\SemBlog.Core.csproj">
       <Project>{787a6593-db4c-4d2a-9ae7-9848bdc7d2fd}</Project>
-      <Name>JustBlog.Core</Name>
+      <Name>SemBlog.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -1224,7 +1222,6 @@
     <Content Include="Views\Blog\List.cshtml" />
     <Content Include="Views\Blog\Post.cshtml" />
     <Content Include="Views\Blog\Thanks.cshtml" />
-    <Content Include="Views\Shared\_AddThis.cshtml" />
     <Content Include="Views\Shared\_Categories.cshtml" />
     <Content Include="Views\Shared\_LatestPosts.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

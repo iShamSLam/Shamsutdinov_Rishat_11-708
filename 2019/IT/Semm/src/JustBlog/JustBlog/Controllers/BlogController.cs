@@ -171,34 +171,5 @@ namespace JustBlog.Controllers
     {
       return View();
     }
-
-    /// <summary>
-    /// Generate and return RSS feed.
-    /// </summary>
-    /// <returns></returns>
-    public ActionResult Feed()
-    {
-      var blogTitle = ConfigurationManager.AppSettings["BlogTitle"];
-      var blogDescription = ConfigurationManager.AppSettings["BlogDescription"];
-      var blogUrl = ConfigurationManager.AppSettings["BlogUrl"];
-
-      var posts = _blogRepository.Posts(0, 25).Select
-      (
-          p => new SyndicationItem
-              (
-                  p.Title,
-                  p.Description,
-                  new Uri(string.Concat(blogUrl, p.Href(Url)))
-              )
-      );
-
-      var feed = new SyndicationFeed(blogTitle, blogDescription, new Uri(blogUrl), posts)
-      {
-        Copyright = new TextSyndicationContent(String.Format("Copyright © {0}", blogTitle)),
-        Language = "en-US"
-      };
-
-      return new FeedResult(new Rss20FeedFormatter(feed));
-    }
   }
 }
